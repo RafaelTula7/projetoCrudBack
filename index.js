@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // rotas ligadas a tabela alunos
 app.use("/api", alunosRotas.routes);
 
-// uma rota raiz que responde por GET
+// Rota raiz que responde por GET, unica que está funcionando no domínio da vercel
 app.get("/", (req, res) => {
     console.log("Rota raiz");
     res.send("Acesso a raiz da API");

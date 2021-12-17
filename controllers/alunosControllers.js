@@ -1,9 +1,11 @@
 const firebase = require("firebase");
 const config = require("../config"); 
 
-const app = firebase.initializeApp(config.firebaseConfig);
+const app = firebase.initializeApp(config.firebaseConfig);   //Comandos para inicializacão do firebase
 const db = firebase.firestore(app); 
 
+
+// Metodo para adicionar alunos ao banco de dados
 const addAluno = async (req, res) => {
     try {
         const data = req.body;
@@ -14,6 +16,7 @@ const addAluno = async (req, res) => {
     }
 }
 
+//Metodo para retornar todos alunos cadastrados no banco
 const getAlunos = async (req, res) => {
     try {
         const alunos = await db.collection("alunos").get();
@@ -35,7 +38,7 @@ const getAlunos = async (req, res) => {
     }
 }
 
-
+// Metodo para retornar o aluno conforme sua ID
 const getAluno = async (req, res) => {
     try {
         const id = req.params.id;
@@ -50,6 +53,8 @@ const getAluno = async (req, res) => {
     }
 }
 
+// Metodo para editar os valores do aluno conforme sua Id
+
 const setAluno = async (req, res) => {
     try {
         const id = req.params.id;
@@ -62,6 +67,8 @@ const setAluno = async (req, res) => {
     }
 }
 
+// Metodo para Excluir aluno do banco de dados
+
 const delAluno = async (req, res) => {
     try {
         const id = req.params.id;
@@ -71,6 +78,8 @@ const delAluno = async (req, res) => {
         res.status(400).send(error.message);
     }
 }
+
+// Exportando os metodos para serem usados pelas rotas
 
 module.exports = {
     addAluno,
